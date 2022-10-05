@@ -1,8 +1,4 @@
-
-
-from numpy import true_divide
-
-eps = 1e-9
+from math import hypot
 
 class Point:
     def __init__(self,x,y):
@@ -11,6 +7,9 @@ class Point:
 
 def signedArea(p1, p2, p3):
     return (p2.y - p1.y) * (p3.x - p2.x) - (p2.x - p1.x) * (p3.y - p2.y)
+
+def dotProduct(p,q):
+    return (p.x * q.x + p.y * q.y) 
 
 def orientation(p1,p2,p3):
     sArea = signedArea(p1,p2,p3)
@@ -45,12 +44,18 @@ def doIntersect(p1,q1,p2,q2):
     
     return False
 
+def distP2P(p1,p2):
+    return hypot(p1.y - p2.y, p1.x - p2.x)
 
-def floatEq(f1,f2):
-    abs(f1 - f2) <= eps
+def distP2L(p1,p2,q2):
+    return 2 * abs(signedArea(p1,p2,q2)) / distP2P(p2,q2)
 
-def floatLt(f1,f2):
-    (f2 - f1) > eps
+
+
+
+
+
+
 
 
 
