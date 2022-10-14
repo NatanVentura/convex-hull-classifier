@@ -50,6 +50,61 @@ def distP2P(p1,p2):
 def distP2L(p1,p2,q2):
     return 2 * abs(signedArea(p1,p2,q2)) / distP2P(p2,q2)
 
+def perpendicularLine(p1,p2,q2):
+    print(p2.x,p2.y)
+    print(q2.x,q2.y)
+    a2 = q2.y - p2.y
+    b2 = -(q2.x - p2.x)
+    a1 = -b2
+    b1 = a2
+    c1 = -(p1.x*a1 + p1.y*b1)
+    print("a: ",a1,"b: ", b1, "c: ", c1)
+    if(a1 != 0): 
+        xAns = -(c1)/a1
+        return Point(xAns,0)
+    yAns = -(c1)/b1
+    return Point(0,yAns)
+
+def IntersecPoint(p1,q1,p2,q2):
+    a1 = p1.y - q1.y
+    b1 = p1.x - q1.x
+    c1 = (p1.x*a1 + b1*p1.y)
+
+    a2 = p2.y - q2.y
+    b2 = p2.x - q2.x
+    c2 = (p2.x*a2 + b2*p2.y)
+
+    det = a1*b2 - a2*b1
+    print("DET: ", det)
+    if(det == 0):
+        return None
+    x = (b2*c1 - b1*c2)/det
+    y = (a1*c2 - a2*c1)/det
+    return Point(x,y)
+
+def IntersectionOnSegment(a,b,p):
+        AB = Point(b.x-a.x,b.y-a.y)
+        BP = Point(p.x-b.x,p.y-b.y)
+        AP = Point(p.x-a.x,p.y-a.y)
+
+        AB_BP = dotProduct(AB,BP)
+        AB_AP = dotProduct(AB,AP)
+        ans = 0
+
+        if(AB_BP > 0):
+            ans = b
+        elif(AB_AP < 0):
+            ans = a
+        else:
+            perpendicularLinePoint = perpendicularLine(a,p,b)
+            ans = IntersecPoint(perpendicularLinePoint,p,a,b)
+        return ans
+
+
+
+
+
+
 
 
 
