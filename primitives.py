@@ -99,6 +99,9 @@ def IntersectionOnSegment(a,b,p):
             perpendicularLinePoint = perpendicularLine(a,p,b)
             ans = IntersecPoint(perpendicularLinePoint,p,a,b)
         return ans
+    
+def isAbove(p1,q1,p2):
+    return signedArea(p1,q1,p2) > 0
 
 
 
