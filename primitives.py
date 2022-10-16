@@ -1,9 +1,10 @@
 from math import hypot
 
 class Point:
-    def __init__(self,x,y):
+    def __init__(self,x,y,label=None):
         self.x = x
         self.y = y
+        self.label = label
 
 def signedArea(p1, p2, p3):
     return (p2.y - p1.y) * (p3.x - p2.x) - (p2.x - p1.x) * (p3.y - p2.y)
