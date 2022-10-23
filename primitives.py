@@ -5,9 +5,19 @@ class Point:
         self.x = x
         self.y = y
         self.label = label
+    def __eq__(self,other):
+        if(self.x == other.x and self.y == other.y):
+            return True
+        return False
+    def dbg(self,a=""):
+        print("Point: ",a," X ",self.x," Y ",self.y)
+
 
 def signedArea(p1, p2, p3):
     return (p2.y - p1.y) * (p3.x - p2.x) - (p2.x - p1.x) * (p3.y - p2.y)
+
+def ccw(p1,p2,p3):
+    return signedArea(p1,p2,p3) > 0
 
 def dotProduct(p,q):
     return (p.x * q.x + p.y * q.y) 

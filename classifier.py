@@ -56,14 +56,17 @@ class Classifier:
                 print(pt.x,pt.y,pt.label)
                 self.falseL2 += 1
     def printMetrics(self):
-        precision = self.trueL1/(self.trueL1+self.falseL1)
-        recall = self.trueL1/(self.trueL1+self.falseL2)
-        fscore = 2*(precision*recall)/(precision+recall)
-        accuracy = (self.trueL1+self.trueL2)/self.total
-        print('Precisao: ',precision)
-        print('Recall', recall)
-        print('F1: ',fscore)
-        print('Accuracy: ',accuracy)
+        try:
+            accuracy = (self.trueL1+self.trueL2)/self.total
+            print('Accuracy: ',accuracy)
+            precision = self.trueL1/(self.trueL1+self.falseL1)
+            print('Precisao: ',precision)
+            recall = self.trueL1/(self.trueL1+self.falseL2)
+            print('Recall', recall)
+            fscore = 2*(precision*recall)/(precision+recall)
+            print('F1: ',fscore)
+        except:
+            print("Divisao por 0, impossível calcular métricas")
 
     
     
