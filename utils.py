@@ -101,7 +101,7 @@ def randomTests(n,s,seed = 7):
             p = Point(random.randint(0,int(3*s)),random.randint(0,int(3*s)),"A")
             pts.append(p)
         for k in range(B):
-            p = Point(random.randint(int(2.8*s),int(5*s)),random.randint(int(2.8*s),5*s),"B")
+            p = Point(random.randint(int(2.3*s),int(5*s)),random.randint(int(2.3*s),5*s),"B")
             pts.append(p)
         sample(pts,"A","B")
         
